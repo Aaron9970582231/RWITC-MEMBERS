@@ -132,7 +132,7 @@ function ListDBValues() {
   // appending the UserId  FirstName  LastName to the  #lbUsers element on the page
   //alert('SELECT * FROM member WHERE name LIKE "%'+$('#s').val()+'%" OR `membership_no` = "'+$('#s').val()+'" ORDER BY name ASC');
   db.transaction(function(transaction) {
-   transaction.executeSql('SELECT * FROM member WHERE name LIKE "%'+$('#s').val()+'%" OR `membership_no` = "'+$('#s').val()+'" ORDER BY name ASC', [],
+   transaction.executeSql('SELECT * FROM member WHERE name LIKE "%'+$('#s').val()+'%" OR `membership_no` LIKE "%'+$('#s').val()+'%" ORDER BY name ASC', [],
      function(transaction, result) {
       if (result != null && result.rows.length > 0) {
         for (var i = 0; i < result.rows.length; i++) {
