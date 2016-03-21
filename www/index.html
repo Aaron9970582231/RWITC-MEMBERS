@@ -65,6 +65,7 @@ you must download this and include the directory your html file is in
 <script type="text/javascript" src="js/value8000.js"></script>
 <script type="text/javascript" src="js/value9000.js"></script>
 <script type="text/javascript" src="js/value10000.js"></script>
+<script type="text/javascript" src="js/value11000.js"></script>
 <link rel="stylesheet" type="text/css" href="css/styles.css" />
 <link rel="stylesheet" type="text/css" href="css/index.css" />
 <!-- main scripts used in this example -->
@@ -301,6 +302,17 @@ function AddValueToDB9() {
   ListDBValuess();
   return false;
 }
+
+function AddValueToDB10() {
+  if (!window.openDatabase) {
+    alert('Databases are not supported in this browser.');
+    return;
+  }
+  alert('Start');
+  addvalue11000();
+  ListDBValuess();
+  return false;
+}
 </script>
 </head>
 <body onload="onBodyLoad()">
@@ -324,6 +336,7 @@ function AddValueToDB9() {
                     <input class="btntog" type="button" value="Add Record7" id="add_record7" style="display:none;margin-top:20px;cursor:pointer;"/>
                     <input class="btntog" type="button" value="Add Record8" id="add_record8" style="display:none;margin-top:20px;cursor:pointer;"/>
                     <input class="btntog" type="button" value="Add Record9" id="add_record9" style="display:none;margin-top:20px;cursor:pointer;"/>
+                    <input class="btntog" type="button" value="Add Record10" id="add_record10" style="display:none;margin-top:20px;cursor:pointer;"/>
                 </fieldset>
             </form>
             <div id="lbUsers" style="text-align:left;border:1px solid #000000;padding-left:15px;"></div>
@@ -371,6 +384,9 @@ function AddValueToDB9() {
         });
         $("#add_record9").click(function() {
             AddValueToDB9();
+        });
+        $("#add_record10").click(function() {
+            AddValueToDB10();
         });
     </script>
 </body>
