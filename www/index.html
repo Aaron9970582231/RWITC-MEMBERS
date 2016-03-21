@@ -120,7 +120,7 @@ function onBodyLoad(){
     },errorHandler,successCallBack);
 
     db.transaction(function(transaction) {
-     transaction.executeSql('SELECT COUNT(*) as total FROM `member` WHERE 1=1 ', [],
+     transaction.executeSql('SELECT COUNT(*) as total FROM `member` WHERE 1=1 AND category = "A" ', [],
        function(transaction, result) {
         if (result != null && result.rows != null) {
           for (var i = 0; i < result.rows.length; i++) {
