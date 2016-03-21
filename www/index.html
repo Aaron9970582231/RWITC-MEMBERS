@@ -118,6 +118,20 @@ function onBodyLoad(){
       //tx.executeSql( 'CREATE TABLE IF NOT EXISTS member(id INTEGER NOT NULL PRIMARY KEY, name TEXT NOT NULL, membership_no TEXT NOT NULL)', [],nullHandler,errorHandler);
       tx.executeSql( 'CREATE TABLE IF NOT EXISTS member(id INTEGER NOT NULL PRIMARY KEY, title TEXT NOT NULL, name TEXT NOT NULL, membership_no TEXT NOT NULL, photo TEXT NOT NULL, signature TEXT NOT NULL, category TEXT NOT NULL, spouse_name TEXT NOT NULL, spouse_photo TEXT NOT NULL, d1_name TEXT NOT NULL, d1_photo TEXT NOT NULL, d2_name TEXT NOT NULL, d2_photo TEXT NOT NULL, d3_name TEXT NOT NULL, d3_photo TEXT NOT NULL, exit_status TEXT NOT NULL, exit_reason TEXT NOT NULL)', [],nullHandler,errorHandler);
     },errorHandler,successCallBack);
+
+    db.transaction(function(transaction) {
+     transaction.executeSql('SELECT COUNT(*) as total FROM `member` WHERE 1=1 ', [],
+       function(transaction, result) {
+        if (result != null && result.rows != null) {
+          for (var i = 0; i < result.rows.length; i++) {
+            var row = result.rows.item(i);
+            $('#s_total_mem').html(row.total);
+          }
+        }
+       },errorHandler);
+    },errorHandler,nullHandler);
+
+    $('#s_total_mem').html()
 }
 
 // list the values in the database to the screen using jquery to update the #lbUsers element
@@ -322,6 +336,7 @@ function AddValueToDB10() {
               <img src="img/rwitc_logo.png" />
             </div>
             <h1>Member Search</h1>
+            <h2 id="total_members" style="font-weight: bold;color:green;">Total Members : <span id="s_total_mem"></span></h2>
             <form id="searchForm" method="post">
             <fieldset>
                     <input id="s" type="text" />
