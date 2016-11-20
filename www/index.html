@@ -125,6 +125,18 @@ function onBodyLoad(){
         if (result != null && result.rows != null) {
           for (var i = 0; i < result.rows.length; i++) {
             var row = result.rows.item(i);
+            $('#s_club_mem').html(row.total);
+          }
+        }
+       },errorHandler);
+    },errorHandler,nullHandler);
+
+    db.transaction(function(transaction) {
+     transaction.executeSql('SELECT COUNT(*) as total FROM `member` WHERE 1=1', [],
+       function(transaction, result) {
+        if (result != null && result.rows != null) {
+          for (var i = 0; i < result.rows.length; i++) {
+            var row = result.rows.item(i);
             $('#s_total_mem').html(row.total);
           }
         }
@@ -132,6 +144,7 @@ function onBodyLoad(){
     },errorHandler,nullHandler);
 
     $('#s_total_mem').html()
+    $('#s_club_mem').html()
 }
 
 // list the values in the database to the screen using jquery to update the #lbUsers element
@@ -336,7 +349,9 @@ function AddValueToDB10() {
               <img src="img/rwitc_logo.png" />
             </div>
             <h1>Member Search</h1>
-            <h2 id="total_members" style="font-weight: bold;color:green;">Total Members : <span id="s_total_mem"></span></h2>
+            <h2 id="total_members" style="font-weight: bold;color:green;">
+              Total Members : <span id="s_total_mem"></span> &nbsp; | &nbsp; Club Members : <span id="s_club_mem"></span>
+            </h2>
             <form id="searchForm" method="post">
             <fieldset>
                     <input id="s" type="text" />
