@@ -209,18 +209,15 @@ function AddValueToDB() {
   }
   alert('Start');
   db.transaction(function(tx){
-    tx.executeSql( 'DROP TABLE member',nullHandler,nullHandler);
-    tx.executeSql( 'CREATE TABLE IF NOT EXISTS member(id INTEGER NOT NULL PRIMARY KEY, title TEXT NOT NULL, name TEXT NOT NULL, membership_no TEXT NOT NULL, photo TEXT NOT NULL, signature TEXT NOT NULL, category TEXT NOT NULL, spouse_name TEXT NOT NULL, spouse_photo TEXT NOT NULL, d1_name TEXT NOT NULL, d1_photo TEXT NOT NULL, d2_name TEXT NOT NULL, d2_photo TEXT NOT NULL, d3_name TEXT NOT NULL, d3_photo TEXT NOT NULL, exit_status TEXT NOT NULL, exit_reason TEXT NOT NULL)', [],nullHandler,errorHandler);
+    tx.executeSql( 'DROP TABLE member');
+    tx.executeSql( 'CREATE TABLE IF NOT EXISTS member(id INTEGER NOT NULL PRIMARY KEY, title TEXT NOT NULL, name TEXT NOT NULL, membership_no TEXT NOT NULL, photo TEXT NOT NULL, signature TEXT NOT NULL, category TEXT NOT NULL, spouse_name TEXT NOT NULL, spouse_photo TEXT NOT NULL, d1_name TEXT NOT NULL, d1_photo TEXT NOT NULL, d2_name TEXT NOT NULL, d2_photo TEXT NOT NULL, d3_name TEXT NOT NULL, d3_photo TEXT NOT NULL, exit_status TEXT NOT NULL, exit_reason TEXT NOT NULL)');
   },errorHandler,successCallBack);
-  db.transaction(function(transaction) { transaction.executeSql("DELETE FROM member"); });
+    db.transaction(function(transaction) { transaction.executeSql("DELETE FROM member"); 
+  });
   addvalue1000();
   // // this is the section that actually inserts the values into the User table
   //db.transaction(function(transaction) { transaction.executeSql('INSERT INTO member (title, name, membership_no, photo, signature, category, spouse_name, spouse_photo, d1_name, d1_photo, d2_name, d2_photo, d3_name, d3_photo, exit_status, exit_reason) values ("MR.", "MINOO ABADAN", "A-001", "A0001s.png", "A0001sig.png", "A", "ROOMA", "A0001w.png", "", "A0001ud.png", "", "A0001ud1.png", "", "A0001ud2.png", "", "");'); });
   //db.transaction(function(transaction) { transaction.executeSql('INSERT INTO member (title, name, membership_no, photo, signature, category, spouse_name, spouse_photo, d1_name, d1_photo, d2_name, d2_photo, d3_name, d3_photo, exit_status, exit_reason) values ("MR.", "EDWARD J. D\'MELLOW", "D-345", "A0199s.png", "A0199sig.png", "A", "ELVEERA", "A0199w.png", "", "A0199ud.png", "", "A0199ud1.png", "", "A0199ud2.png", "", "");'); });
-  // db.transaction(function(transaction) { transaction.executeSql("INSERT INTO member (name, membership_no, photo, signature, category, spouse_name, spouse_photo, d1_name, d1_photo, d2_name, d2_photo, d3_name, d3_photo, exit_status, exit_reason) values ('MR. MUKESH S. ACHARYA', 'A-015', 'A0002s.png', 'A0002sig.png', 'A', 'ASHA', 'A0002w.png', '', 'A0002ud.png', '', 'A0002ud1.png', '', 'A0002ud2.png', '', '');"); });
-  // db.transaction(function(transaction) { transaction.executeSql("INSERT INTO member (name, membership_no, photo, signature, category, spouse_name, spouse_photo, d1_name, d1_photo, d2_name, d2_photo, d3_name, d3_photo, exit_status, exit_reason) values ('MR. RISHI M. ACHARYA', 'A-368', 'A0003s.png', 'A0003sig.png', 'A', '', 'A0003w.png', '', 'A0003ud.png', '', 'A0003ud1.png', '', 'A0003ud2.png', '', '');"); });
-  // db.transaction(function(transaction) { transaction.executeSql("INSERT INTO member (name, membership_no, photo, signature, category, spouse_name, spouse_photo, d1_name, d1_photo, d2_name, d2_photo, d3_name, d3_photo, exit_status, exit_reason) values ('MR. YEZDI D. ACIDWALLA', 'A-016', 'A0004s.png', 'A0004sig.png', 'A', 'NAWAZ', 'A0004w.png', '', 'A0004ud.png', '', 'A0004ud1.png', '', 'A0004ud2.png', '', '');"); });
-  // db.transaction(function(transaction) { transaction.executeSql("INSERT INTO member (name, membership_no, photo, signature, category, spouse_name, spouse_photo, d1_name, d1_photo, d2_name, d2_photo, d3_name, d3_photo, exit_status, exit_reason) values ('MR. DINSHAW P. ADENWALLA', 'A-017', 'A0006s.png', 'A0006sig.png', 'A', 'JASMINE', 'A0006w.png', '', 'A0006ud.png', '', 'A0006ud1.png', '', 'A0006ud2.png', '', '');"); });
   
   //db.transaction(function(transaction) {
     //transaction.executeSql('INSERT INTO member(name, membership_no, photo, signature, category, spouse_name, spouse_photo, d1_name, d1_photo, d2_name, d2_photo, d3_name, d3_photo, exit_status, exit_reason) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', ['MR. MINOO ABADAN', 'A-001', 'A0001s.png', 'A0001sig.png', 'A', 'ROOMA', 'A0001w.png', 'aaa', 'A0001ud.png', 'aaa', 'A0001ud1.png', 'aaa', 'A0001ud2.png', 'aaa', 'aaa'], nullHandler,errorHandler);
