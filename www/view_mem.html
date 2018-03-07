@@ -88,13 +88,14 @@
                   if (result.rows.length > 0) {
                     for (var i = 0; i < result.rows.length; i++) {
                         var row = result.rows.item(i);
+                        var sign_url = "file:///storage/emulated/0/Pictures/"+row.signature.toLowerCase();
                         html = '<div class="form-row" style="float:right;">';
                             html += '<a href="index.html">Back</a>';
                         html += '</div>'
                         html += '<div class=form-title-row>';
                             html += '<img src="file:///storage/emulated/0/Pictures/'+row.photo.toLowerCase()+'" />';
                             html += '<img src="file:///storage/emulated/0/Pictures/'+row.signature.toLowerCase()+'" />';
-                            html += '<h2>'+row.title+' '+row.name+'</h2>';
+                            html += '<h2>'+row.title+' '+row.name+' '+ sign_url +'</h2>';
                             if(row.category == 'A'){
                                 category = 'Club';
                             } 
